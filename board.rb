@@ -7,7 +7,7 @@ module TicTacToe
 
     def initialize( dimensions )
       @dimensions = dimensions
-      @board = Array.new( dimensions ) {Array.new( dimensions ) { nil }}
+      @board = Array.new( dimensions * dimensions ) { nil }
     end
 
   end
