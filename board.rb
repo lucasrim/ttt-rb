@@ -22,7 +22,6 @@ module TicTacToe
       raise ArgumentError, "Space is taken" unless @empty_spaces.include?( space )
       board[ space ] = character
     end
-
   end
 
 end

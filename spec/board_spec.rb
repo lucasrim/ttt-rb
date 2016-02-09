@@ -1,7 +1,7 @@
-require_relative 'board'
+require_relative '../board'
 
 describe TicTacToe::Board do
-  
+
   describe 'board initialization' do
     let(:board) {TicTacToe::Board.new(3)}
 
