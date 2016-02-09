@@ -1,6 +1,7 @@
 require_relative 'board'
 
 describe TicTacToe::Board do
+  
   describe 'board initialization' do
     let(:board) {TicTacToe::Board.new(3)}
 
@@ -17,21 +18,32 @@ describe TicTacToe::Board do
     end
   end
 
-  describe '#place_move' do
-    let(:board) {TicTacToe::Board.new(3)}
+  describe '#available_spaces' do
 
-    it 'places X at board[0]' do
-      expect(board.place_move('X', 0)).to eq( ['X', nil, nil, nil, nil, nil, nil, nil, nil] )
-    end
+    let(:board) {TicTacToe::Board.new(3)}
 
     it 'knows available spaces' do
       board.place_move('X', 0)
       expect(board.available_spaces).to eq([1, 2, 3, 4, 5, 6, 7, 8])
     end
 
+  end
+
+  describe '#place_move' do
+    let(:board) {TicTacToe::Board.new(3)}
+
+    it 'places X at board[0]' do
+      board.place_move('X', 0)
+      expect(board.board).to eq( ['X', nil, nil, nil, nil, nil, nil, nil, nil] )
+    end
+
+    it 'raises error if arguments not filled' do
+      expect{board.place_move()}.to raise_error(ArgumentError)
+    end
+
     it 'raises error if placed at taken space' do
       board.place_move('X', 0)
-      expect(board.place_move('O', 0)).to raise_error(ArgumentError)
+      expect{board.place_move('O', 0)}.to raise_error(ArgumentError)
     end
 
   end
